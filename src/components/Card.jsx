@@ -5,17 +5,18 @@ const Card = ({ employee }) => {
 
   return (
     <div className="bg-white shadow-md rounded-lg p-6 w-64">
+      <h2>Información del usuario:</h2>
       <div className="font-bold text-lg mb-2">{name}</div>
       <div className="text-gray-700 mb-2">Cargo: {job}</div>
       <div className="text-gray-700 mb-4">ID: {idDate}</div>
       <div className="font-semibold mb-2">Accesos:</div>
       {/* <ul>
         {accesos.map((acceso, index) => (
-          <li key={index} className="list-disc ml-6">
+            <li key={index} className="list-disc ml-6">
             {acceso}
-          </li>
+            </li>
         ))}
-      </ul> */}
+        </ul> */}
     </div>
   );
 };
