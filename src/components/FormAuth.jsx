@@ -34,6 +34,7 @@ const FormAuth = () => {
 
   return (
     <div className="w-full max-w-xs mx-auto mt-10">
+      <h1>login</h1>
       <form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit}
