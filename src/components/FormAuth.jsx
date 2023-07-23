@@ -1,35 +1,45 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-//import { useHistory } from "react-router-dom";
-import { auth } from "../config/firebase";
+import { useNavigate } from "react-router-dom";
+import { signInUser } from "../config/auth";
 
 const FormAuth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const history = useHistory();
+  const navigate = useNavigate();
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  console.log(
+    "🚀 ~ file: FormAuth.jsx:11 ~ FormAuth ~ formFields:",
+    email,
+    password
+  );
+
+  const resetFormEmail = () => {
+    return setEmail("");
   };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const resetFormPassword = () => {
+    return setPassword("");
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      await signIn(); // Llama a la función signIn para autenticar al usuario con el correo y la contraseña
-      //history.push("/dashboard"); // Redirige al usuario a la página de dashboard (cambia '/dashboard' por la ruta deseada)
+      const userCredential = await signInUser(email, password);
+      if (userCredential) {
+        resetFormEmail();
+        resetFormPassword();
+        navigate("/dashboard");
+      }
     } catch (error) {
       console.error("Error al iniciar sesión:", error.message);
-      // Aquí puedes mostrar un mensaje de error al usuario si la autenticación falla.
     }
   };
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
 
-  const signIn = async () => {
-    await createUserWithEmailAndPassword(auth, email, password);
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
   };
 
   return (
