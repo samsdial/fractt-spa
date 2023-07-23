@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const config = {
   apiKey: "AIzaSyDRrRUvPQT_v8CDSurCbyQpjt4UKfohzIs",
@@ -35,8 +36,11 @@ export const signInUser = async (email, password) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
 };
+
 export const userStateListener = (callback) => {
   return onAuthStateChanged(auth, callback);
 };
 
 export const SignOutUser = async () => await signOut(auth);
+
+export const db = getFirestore(app);
