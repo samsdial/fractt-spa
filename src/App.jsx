@@ -11,6 +11,8 @@ import Login from "./routes/Login";
 
 const App = () => {
   const [employeeDetail, setEmployeeDetail] = useState([]);
+  const [logData, setLogData] = useState([]);
+
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -37,8 +39,25 @@ const App = () => {
       }
     };
 
+    const getLogData = async () => {
+      try {
+        const logCollectionRef = collection(db, "log");
+        const data = await getDocs(logCollectionRef);
+        const filteredData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setLogData(filteredData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     getEmployeeDetail();
+    getLogData();
   }, []);
+
+  console.log("🚀 ~ file: App.jsx:15 ~ App ~ logData:", logData);
 
   return (
     <div>
@@ -49,8 +68,12 @@ const App = () => {
           element={
             <RequireAuth>
               <Nav />
-              {employeeDetail.map((employee) => (
-                <Card key={employee.id} employee={employee} />
+              {employeeDetail.map((employee, index) => (
+                <Card
+                  key={employee.id + index}
+                  employee={employee}
+                  logData={logData}
+                />
               ))}
             </RequireAuth>
           }
