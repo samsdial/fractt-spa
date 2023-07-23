@@ -19,7 +19,10 @@ const App = () => {
     <div>
       <Routes>
         <Route index element={<Login />} />
-        <Route path="dashboard" element={<h1>hello</h1>} />
+        <Route
+          path="dashboard"
+          element={<h1 className="text-3xl text-center">Hello</h1>}
+        />
       </Routes>
     </div>
   );
