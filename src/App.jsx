@@ -1,5 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import Nav from "./components/Nav";
+import RequireAuth from "./components/RequireAuth";
 import { AuthContext } from "./context/auth";
 import Login from "./routes/Login";
 
@@ -7,7 +9,7 @@ const App = () => {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  console.log("User:", !!currentUser);
+  // console.log("User:", !!currentUser);
 
   useEffect(() => {
     if (currentUser) {
@@ -21,7 +23,12 @@ const App = () => {
         <Route index element={<Login />} />
         <Route
           path="dashboard"
-          element={<h1 className="text-3xl text-center">Hello</h1>}
+          element={
+            <RequireAuth>
+              <Nav />
+              <h2>Hello</h2>
+            </RequireAuth>
+          }
         />
       </Routes>
     </div>
