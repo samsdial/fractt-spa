@@ -57,8 +57,6 @@ const App = () => {
     getLogData();
   }, []);
 
-  console.log("🚀 ~ file: App.jsx:15 ~ App ~ logData:", logData);
-
   return (
     <div>
       <Routes>
