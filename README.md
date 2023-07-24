@@ -48,6 +48,12 @@ Inicia el servidor de desarrollo:
 npm run dev
 ```
 
+Email y datos de usuario en Employee Flow:
+
+test@fracttal.com
+Pass:
+1234567
+
 Abre tu navegador y accede a http://localhost:3000 para ver la aplicación Employee Flow en funcionamiento.
 
 ¡Listo! Ahora puedes utilizar la aplicación para gestionar el flujo de empleados.
