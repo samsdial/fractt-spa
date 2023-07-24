@@ -12,12 +12,8 @@ import Login from "./routes/Login";
 const App = () => {
   const [employeeDetail, setEmployeeDetail] = useState([]);
   const [logData, setLogData] = useState([]);
-
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  console.log("User:", !!currentUser);
-  const employeeCollectionRef = collection(db, "employee");
 
   useEffect(() => {
     if (currentUser) {
@@ -26,6 +22,7 @@ const App = () => {
   }, [currentUser, navigate]);
 
   useEffect(() => {
+    const employeeCollectionRef = collection(db, "employee");
     const getEmployeeDetail = async () => {
       try {
         const data = await getDocs(employeeCollectionRef);

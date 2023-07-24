@@ -3,10 +3,7 @@ import PropTypes from "prop-types";
 import CircleWithShadow from "./CircleWithShadow";
 import Collapse from "./Collapse";
 
-// eslint-disable-next-line react/prop-types
-
 const Card = ({ employee, logData }) => {
-  // eslint-disable-next-line react/prop-types
   const { idDate, name, job, description } = employee;
 
   function formatDate(dateTimeString) {
@@ -88,6 +85,7 @@ const Card = ({ employee, logData }) => {
 
 Card.propTypes = {
   employee: PropTypes.shape({
+    description: PropTypes.string.isRequired,
     idDate: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     job: PropTypes.string.isRequired,

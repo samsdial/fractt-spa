@@ -20,11 +20,6 @@ const FormAuth = () => {
 
     try {
       //const hashedPassword = sha256(password);
-      // console.log(
-      //   "🚀 ~ file: FormAuth.jsx:23 ~ handleSubmit ~ hashedPassword:",
-      //   hashedPassword
-      // );
-
       const userCredential = await signInUser(email, password);
       if (userCredential) {
         resetFormEmail();
@@ -56,13 +51,8 @@ const FormAuth = () => {
 
   return (
     <div className="w-full max-w-xs mx-auto mt-10">
-      <div className="flex text-center items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-        <img
-          className="w-8 h-8 mr-2"
-          src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-          alt="logo"
-        />
-        Flow Employment
+      <div className="text-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+        Employee flow
       </div>
 
       <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -99,13 +89,22 @@ const FormAuth = () => {
                 required
               />
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col items-center justify-between">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold mb-2 py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
               >
                 Entrar
               </button>
+              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                Don’t have an account yet?{" "}
+                <a
+                  href="#"
+                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                >
+                  Sign up
+                </a>
+              </p>
             </div>
           </form>
         </div>
