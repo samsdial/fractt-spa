@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background-color: rgba(52, 53, 65, 0.9);
+}
+ul li {
+    list-style-type: none !important;
+}
+
+.list-right-gray {
+    border-left: 5px solid gainsboro;
+}
+.list-right-gray li {
+    margin-left: 5px;
+}
